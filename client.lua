@@ -1,10 +1,12 @@
-local lock = false
+
 RegisterKeyMapping('opencar', 'Apri-car-menu', 'KEYBOARD', 'M')
 RegisterCommand('opencar', function()
-    SetNuiFocus(true, true)
-    SendNUIMessage({
-        action = "open"
-    })
+    if IsPedInAnyVehicle(PlayerPedId(), false) then
+        SetNuiFocus(true, true)
+        SendNUIMessage({
+            action = "open"
+        })
+    end
 end)
 
 RegisterNUICallback('Close', function()
