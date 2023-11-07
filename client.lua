@@ -40,7 +40,6 @@ RegisterNUICallback('openDoor', function(data)
 end)
 
 RegisterNUICallback('openWindow', function(window)
-    print(window)
     local Ped = PlayerPedId()
     local GetVehiclePed = GetVehiclePedIsIn(Ped, false)
     if not IsVehicleWindowIntact(GetVehiclePed, window) then
@@ -55,7 +54,6 @@ RegisterNUICallback('selectSeat', function(seat)
     local Ped = PlayerPedId()
     local GetVehiclePed = GetVehiclePedIsIn(Ped, false)
     
-    print(IsVehicleSeatFree(GetVehiclePed, seat))
     if IsVehicleSeatFree(GetVehiclePed, seat) then
         SetPedIntoVehicle(Ped, GetVehiclePed, seat)
     end
@@ -68,11 +66,8 @@ RegisterNUICallback('lock', function()
     local i = GetVehicleDoorLockStatus(GetVehiclePed)
 
     if i == 1 then
-        print(GetVehicleDoorLockStatus(GetVehiclePed))
-        print('Bloccate')
         SetVehicleDoorsLocked(GetVehiclePed, 2)
     else
-        print('Sbloccate')
         SetVehicleDoorsLocked(GetVehiclePed, 1)
     end
 end)
